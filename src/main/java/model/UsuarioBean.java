@@ -14,7 +14,6 @@ public class UsuarioBean {
     private String usuario;
     private String senha;
     private boolean admin;
-    
 
     public UsuarioBean() {
     }
