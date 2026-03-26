@@ -42,8 +42,8 @@ public class ClubeDAO {
             rs = stmt.executeQuery();
             while(rs.next()) {
                 ClubeBean clube = new ClubeBean();
-                clube.setNomeClube(rs.getString("nome clube"));
-                clube.setFundacao(rs.getDate("fundação"));
+                clube.setNomeClube(rs.getString("nome"));
+                clube.setFundacao(rs.getDate("fundacao"));
                 
                 clubes.add(clube);
             }
