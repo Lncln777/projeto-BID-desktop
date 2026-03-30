@@ -11,12 +11,14 @@ import java.sql.Date;
  * @author Aluno
  */
 public class ClubeBean {
+    private int idC;
     private String nomeClube;
     private Date fundacao;
     
     public ClubeBean(){  
     } 
-    public ClubeBean(String nomeClube, Date fundacao){
+    public ClubeBean(int id, String nomeClube, Date fundacao){
+        this.idC = idC;
         this.nomeClube = nomeClube;
         this.fundacao = fundacao;
         
@@ -36,6 +38,14 @@ public class ClubeBean {
 
     public void setFundacao(Date fundacao) {
         this.fundacao = fundacao;
+    }
+
+    public int getIdC() {
+        return idC;
+    }
+
+    public void setIdC(int idC) {
+        this.idC = idC;
     }
     
     

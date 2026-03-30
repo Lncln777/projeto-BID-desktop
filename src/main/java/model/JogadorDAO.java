@@ -21,7 +21,7 @@ public class JogadorDAO {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
             
-            stmt = conn.prepareStatement("insert into jogadores (nome, clube) VALUES (?,?)");
+            stmt = conn.prepareStatement("insert into jogadores (nome, clube) VALUES (?,?)");          
             stmt.setString(1, jogadores.getNomeJogador());
             stmt.setString(2, jogadores.getClube());
                     
@@ -43,6 +43,7 @@ public class JogadorDAO {
             rs = stmt.executeQuery();
             while(rs.next()) {
                 JogadorBean jogador = new JogadorBean();
+                jogador.setIdJ(rs.getString("id"));
                 jogador.setNomeJogador(rs.getString("nome"));
                 jogador.setClube(rs.getString("clube"));
                 

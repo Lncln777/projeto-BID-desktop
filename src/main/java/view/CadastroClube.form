@@ -54,19 +54,22 @@
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton2" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="nomeClube" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jButton2" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="nomeClube" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="fundacao" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jButton4" min="-2" pref="455" max="-2" attributes="0"/>
+                                  <Component id="jButton5" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="fundacao" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jButton4" min="-2" pref="455" max="-2" attributes="0"/>
-                              <Component id="jButton5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -91,7 +94,9 @@
                               <Component id="jButton2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="nomeClube" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="fundacao" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
@@ -197,6 +202,11 @@
               <Image iconType="2" name="C:\Users\Aluno\Downloads\logoMVP.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Formato de data: YYYY-MM-DD"/>
           </Properties>
         </Component>
       </SubComponents>

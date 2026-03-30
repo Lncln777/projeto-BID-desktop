@@ -42,6 +42,7 @@ public class ClubeDAO {
             rs = stmt.executeQuery();
             while(rs.next()) {
                 ClubeBean clube = new ClubeBean();
+                clube.setIdC(rs.getInt("id"));
                 clube.setNomeClube(rs.getString("nome"));
                 clube.setFundacao(rs.getDate("fundacao"));
                 
@@ -53,4 +54,5 @@ public class ClubeDAO {
         }
         return clubes;
         }
+        
 }

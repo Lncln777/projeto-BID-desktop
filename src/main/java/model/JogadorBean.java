@@ -9,6 +9,7 @@ package model;
  * @author Aluno
  */
 public class JogadorBean {
+    private String idJ;
     private String nomeJogador;
     private String clube;
     
@@ -16,6 +17,7 @@ public class JogadorBean {
     }
 
     public JogadorBean(int id, String nomeJogador, String clube) {
+        this.idJ = idJ;
         this.nomeJogador = nomeJogador;
         this.clube = clube;
     }
@@ -34,6 +36,14 @@ public class JogadorBean {
 
     public void setClube(String clube) {
         this.clube = clube;
+    }
+
+    public String getIdJ() {
+        return idJ;
+    }
+
+    public void setIdJ(String idJ) {
+        this.idJ = idJ;
     }
 
     
