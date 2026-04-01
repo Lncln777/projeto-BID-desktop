@@ -27,7 +27,7 @@ public class UsuarioDAO {
         }
     }
     public UsuarioBean logar(String usuario, String senha) {
-        UsuarioBean user = new UsuarioBean();
+        UsuarioBean userLogado = new UsuarioBean();
         try{
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -39,17 +39,17 @@ public class UsuarioDAO {
             
             rs = stmt.executeQuery();
             if(rs.next()){
-                user.setId(rs.getInt("id"));
-                user.setNome(rs.getString("nome"));
-                user.setUsuario(rs.getString("usuario"));
-                user.setSenha(rs.getString("senha"));
-                user.setAdmin(rs.getBoolean("admin"));
+                userLogado.setId(rs.getInt("id"));
+                userLogado.setNome(rs.getString("nome"));
+                userLogado.setUsuario(rs.getString("usuario"));
+                userLogado.setSenha(rs.getString("senha"));
+                userLogado.setAdmin(rs.getBoolean("admin"));
             }
             
         } catch(SQLException e) {
             e.printStackTrace();
         }
-        return user;
+        return userLogado;
     }
     
 }

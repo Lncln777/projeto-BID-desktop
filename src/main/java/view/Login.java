@@ -45,7 +45,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         userLogin = new javax.swing.JTextField();
         senhaLogin = new javax.swing.JPasswordField();
-        jButton3 = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -58,6 +57,8 @@ public class Login extends javax.swing.JFrame {
         jScrollPane2.setViewportView(senha);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -97,12 +98,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setText("LOGIN");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -121,13 +116,11 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(userLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(43, Short.MAX_VALUE))
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(87, 87, 87)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                     .addComponent(userLogin))
@@ -158,23 +151,26 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if ((userLogin.getText().isEmpty()) || (senhaLogin.getText().isEmpty())) {
-    JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
-    } else {
-        
-    UsuarioDAO dao = new UsuarioDAO();
-    UsuarioBean login = new UsuarioBean();
     
-    login.setUsuario(userLogin.getText().trim());
-    login.setSenha(senhaLogin.getText().trim());
-    dao.logar(login.getUsuario(), login.getSenha());
-    
-    JOptionPane.showMessageDialog(null, "Login feito com sucesso! ");
+    String currentUser = userLogin.getText().trim();
+        String currentSenha = senhaLogin.getText().trim();
         
-        Inicio telaInicio = new Inicio();
-       
-        telaInicio.setVisible(true);
-        this.dispose();  }       // TODO add your handling code here:
+        if(currentUser.equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha corretamente o campo Usuario!!", "ERRO!", JOptionPane.WARNING_MESSAGE);
+        } else if (currentSenha.equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha corretamente o campo Senha!!", "ERRO!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            UsuarioDAO dao = new UsuarioDAO();
+            UsuarioBean userLogado = dao.logar(currentUser, currentSenha); 
+            if(userLogado.getId() > 0) {
+                JOptionPane.showMessageDialog(null, "Login feito com sucesso", "", JOptionPane.DEFAULT_OPTION);
+                new Inicio(userLogado).setVisible(true);
+                this.dispose();
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário e/ou Senha incorretos!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            }
+    }       // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -230,7 +226,6 @@ Cadastro telaCadastro = new Cadastro();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
