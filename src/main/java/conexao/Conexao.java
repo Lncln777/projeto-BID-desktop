@@ -37,8 +37,6 @@ public class Conexao {
         
         if(conn == null) {
          JOptionPane.showMessageDialog(null, "Erro ao conectar ao banco de dados...");
-        } else {
-            JOptionPane.showMessageDialog(null, "Conectado com o banco de dados...");
         }
         
     }

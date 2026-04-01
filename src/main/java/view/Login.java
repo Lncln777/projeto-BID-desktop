@@ -163,7 +163,7 @@ public class Login extends javax.swing.JFrame {
             UsuarioDAO dao = new UsuarioDAO();
             UsuarioBean userLogado = dao.logar(currentUser, currentSenha); 
             if(userLogado.getId() > 0) {
-                JOptionPane.showMessageDialog(null, "Login feito com sucesso", "", JOptionPane.DEFAULT_OPTION);
+                JOptionPane.showMessageDialog(null, "Login feito com sucesso", "Verificação de Login", JOptionPane.DEFAULT_OPTION);
                 new Inicio(userLogado).setVisible(true);
                 this.dispose();
                 

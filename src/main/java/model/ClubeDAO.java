@@ -55,4 +55,27 @@ public class ClubeDAO {
         return clubes;
         }
         
+        public List<ClubeBean> listarNomes () {
+            List<ClubeBean> clubes = new ArrayList();
+            try {
+            Connection conn = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            
+            stmt = conn.prepareStatement("SELECT nome FROM clube");
+            
+            rs = stmt.executeQuery();
+            while(rs.next()) {
+                ClubeBean clube = new ClubeBean();
+                clube.setNomeClube(rs.getString("nome"));
+                
+                clubes.add(clube);
+            }
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return clubes;
+        }
+        
 }
