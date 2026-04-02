@@ -191,7 +191,12 @@ Inicio telaInicio = new Inicio();
     }
 
     nomeClube.setText("");
-    fundacao.setText("");        // TODO add your handling code here:
+    fundacao.setText("");  
+    
+Inicio telaInicio = new Inicio();
+
+        telaInicio.setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void fundacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fundacaoActionPerformed
