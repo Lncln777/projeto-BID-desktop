@@ -78,4 +78,24 @@ public class ClubeDAO {
         return clubes;
         }
         
+        public boolean existeClube(String nome) {
+    String sql = "SELECT COUNT(*) FROM clube WHERE nome = ?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, nome);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            return rs.getInt(1) > 0;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return false;
+}
 }

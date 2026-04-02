@@ -15,6 +15,7 @@ import model.ClubeBean;
 import model.ClubeDAO;
 import model.ClubeBean;
 import model.ClubeDAO;
+import view.Inicio;
 
 /**
  *
@@ -42,7 +43,7 @@ public class CadastroClube extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         nomeClube = new javax.swing.JTextField();
-        fundacao = new javax.swing.JTextField();
+        fundacaoText = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -70,9 +71,9 @@ public class CadastroClube extends javax.swing.JFrame {
             }
         });
 
-        fundacao.addActionListener(new java.awt.event.ActionListener() {
+        fundacaoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fundacaoActionPerformed(evt);
+                fundacaoTextActionPerformed(evt);
             }
         });
 
@@ -93,7 +94,7 @@ public class CadastroClube extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Formato de data: YYYY-MM-DD");
+        jLabel3.setText("Formato de data: DD/MM/YYYY");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,7 +112,7 @@ public class CadastroClube extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jButton3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(fundacao))
+                            .addComponent(fundacaoText))
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton5)))
                 .addGap(64, 64, 64)
@@ -132,7 +133,7 @@ public class CadastroClube extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fundacao, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fundacaoText, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,39 +170,56 @@ Inicio telaInicio = new Inicio();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        if ((nomeClube.getText().isEmpty()) || (fundacao.getText().isEmpty())) {
+    if ((nomeClube.getText().isEmpty()) || (fundacaoText.getText().isEmpty())) {
     JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
-    } else {
-        
-    ClubeDAO dao = new ClubeDAO();
-    ClubeBean novoClube = new ClubeBean();
-    novoClube.setNomeClube(nomeClube.getText());
-    String[] data = fundacao.getText().split("-");    
+    return;}
+    
+        ClubeDAO dao = new ClubeDAO();
+
+    if (dao.existeClube(nomeClube.getText())) {
+        JOptionPane.showMessageDialog(null, "Clube já Cadastrado.");
+return;
+    }
+
+    try{ 
+        String[] data = fundacaoText.getText().split("/");
+
+     if(data.length != 3){
+        JOptionPane.showMessageDialog(null, "Coloque a data no formato certo");
+        return; }
+
     int ano = Integer.parseInt(data[0]);
     int mes = Integer.parseInt(data[1]);
     int dia = Integer.parseInt(data[2]);
-    
-    LocalDate d = LocalDate.of(ano, mes, dia);
+
+    LocalDate d = LocalDate.of(dia, mes, ano);
+
+    ClubeBean novoClube = new ClubeBean();
+    novoClube.setNomeClube(nomeClube.getText());
     novoClube.setFundacao(Date.valueOf(d));
+    
     dao.cadastrarClube(novoClube);
-    
+
     JOptionPane.showMessageDialog(null, "Clube "+ nomeClube.getText()+" inserido com sucesso!");
-
-    }
-
-    nomeClube.setText("");
-    fundacao.setText("");  
     
-Inicio telaInicio = new Inicio();
+    nomeClube.setText("");
+    fundacaoText.setText("");
+
+    Inicio telaInicio = new Inicio();
 
         telaInicio.setVisible(true);
-        this.dispose();// TODO add your handling code here:
+        this.dispose();
+
+    } catch (Exception e){
+        JOptionPane.showMessageDialog(null,"Coloque a data no formato certo");
+}
+    
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void fundacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fundacaoActionPerformed
+    private void fundacaoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fundacaoTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fundacaoActionPerformed
+    }//GEN-LAST:event_fundacaoTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,7 +257,7 @@ Inicio telaInicio = new Inicio();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField fundacao;
+    private javax.swing.JTextField fundacaoText;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

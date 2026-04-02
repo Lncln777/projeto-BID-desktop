@@ -58,7 +58,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="fundacao" max="32767" attributes="0"/>
+                              <Component id="fundacaoText" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jButton4" min="-2" pref="455" max="-2" attributes="0"/>
                           <Component id="jButton5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="fundacao" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="fundacaoText" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -135,9 +135,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeClubeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="fundacao">
+        <Component class="javax.swing.JTextField" name="fundacaoText">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fundacaoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fundacaoTextActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
@@ -169,7 +169,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Formato de data: YYYY-MM-DD"/>
+            <Property name="text" type="java.lang.String" value="Formato de data: DD/MM/YYYY"/>
           </Properties>
         </Component>
       </SubComponents>

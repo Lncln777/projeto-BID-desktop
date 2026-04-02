@@ -79,7 +79,7 @@ public class Exclusao extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "linha", "nome", "clube"
+                "id de jogador", "nome", "clube"
             }
         ) {
             boolean[] canEdit = new boolean [] {
