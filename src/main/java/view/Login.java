@@ -152,15 +152,21 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
-    String currentUser = userLogin.getText().trim();
+        String currentUser = userLogin.getText().trim();
         String currentSenha = senhaLogin.getText().trim();
         
+        UsuarioDAO dao = new UsuarioDAO();
+
+    if (dao.existe(user.getText())) {
+        JOptionPane.showMessageDialog(null, "já Cadastrado.");
+    return;
+    }
+    
         if(currentUser.equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha corretamente o campo Usuario!!", "ERRO!", JOptionPane.WARNING_MESSAGE);
         } else if (currentSenha.equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha corretamente o campo Senha!!", "ERRO!", JOptionPane.WARNING_MESSAGE);
         } else {
-            UsuarioDAO dao = new UsuarioDAO();
             UsuarioBean userLogado = dao.logar(currentUser, currentSenha); 
             if(userLogado.getId() > 0) {
                 JOptionPane.showMessageDialog(null, "Login feito com sucesso", "Verificação de Login", JOptionPane.DEFAULT_OPTION);
@@ -170,7 +176,9 @@ public class Login extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário e/ou Senha incorretos!", "ERRO!", JOptionPane.ERROR_MESSAGE);
             }
-    }       // TODO add your handling code here:
+    }
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

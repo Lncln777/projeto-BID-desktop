@@ -178,7 +178,7 @@ Inicio telaInicio = new Inicio();
 
     if (dao.existeClube(nomeClube.getText())) {
         JOptionPane.showMessageDialog(null, "Clube já Cadastrado.");
-return;
+    return;
     }
 
     try{ 

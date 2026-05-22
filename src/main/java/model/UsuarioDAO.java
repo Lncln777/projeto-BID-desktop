@@ -52,4 +52,24 @@ public class UsuarioDAO {
         return userLogado;
     }
     
+    public boolean existe(String nome) {
+    String sql = "SELECT COUNT(*) FROM usuarios WHERE nome = ?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, nome);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            return rs.getInt(1) > 0;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return false;
+}
 }

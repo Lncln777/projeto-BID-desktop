@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class Conexao {
-    private static final String url = "jdbc:mysql://localhost:3307/bid";
+    private static final String url = "jdbc:mysql://localhost:3328/bid";
     private static final String user = "root";
     private static final String senha =  "";
     

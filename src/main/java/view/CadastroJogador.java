@@ -199,11 +199,18 @@ if (location == null) {
     }//GEN-LAST:event_nomeJogadorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-if ((clubeCombo.getSelectedItem().toString().equals("")) || (nomeJogador.getText().isEmpty())) {
+    
+        JogadorDAO dao = new JogadorDAO();
+
+    if (dao.existeJogador(nomeJogador.getText())) {
+        JOptionPane.showMessageDialog(null, "Jogador já Cadastrado.");
+    return;
+    }
+        
+    if ((clubeCombo.getSelectedItem().toString().equals("")) || (nomeJogador.getText().isEmpty())) {
     JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
     } else {
         
-    JogadorDAO dao = new JogadorDAO();
     JogadorBean novoJogador = new JogadorBean();
     novoJogador.setNomeJogador(nomeJogador.getText());
     novoJogador.setClube(clubeCombo.getSelectedItem().toString());
@@ -212,7 +219,7 @@ if ((clubeCombo.getSelectedItem().toString().equals("")) || (nomeJogador.getText
     JOptionPane.showMessageDialog(null, "Jogador "+ nomeJogador.getText()+" inserido com sucesso!");
 
     }
-
+    
     Inicio telaInicio = new Inicio();
        
         telaInicio.setVisible(true);

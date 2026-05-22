@@ -175,13 +175,18 @@ public class Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    
+    UsuarioDAO dao = new UsuarioDAO();
+
+    if (dao.existe(user.getText())) {
+        JOptionPane.showMessageDialog(null, "Já Cadastrado.");
+    return;
+    }
+        
     if ((user.getText().isEmpty()) || (nome.getText().isEmpty()) ||
     (senha.getText().isEmpty())) {
     JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
     } else {
         
-    UsuarioDAO dao = new UsuarioDAO();
     UsuarioBean novoUsuario = new UsuarioBean();
     novoUsuario.setNome(nome.getText());
     novoUsuario.setUsuario(user.getText());
@@ -195,6 +200,12 @@ public class Cadastro extends javax.swing.JFrame {
     nome.setText("");
     user.setText("");
     senha.setText("");
+    
+    
+    if (dao.existe(user.getText())) {
+        JOptionPane.showMessageDialog(null, "já Cadastrado.");
+    return;
+    }
     
     Login telaLogin = new Login();
        
